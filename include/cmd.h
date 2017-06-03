@@ -9,6 +9,7 @@
 #define ZONE_OTP_BITS 		1
 #define ZONE_DATA_BITS 		2
 
+#define NONCE_LEN 32
 #define RANDOM_LEN 32
 #define DEVREV_LEN 4
 #define SERIALNUM_LEN 9
@@ -113,6 +114,7 @@ struct __attribute__ ((__packed__)) cmd_packet {
 	uint16_t checksum;
 };
 
+void get_nonce(struct io_interface *ioif);
 void get_random(struct io_interface *ioif);
 void cmd_get_serialnbr(struct io_interface *ioif);
 void cmd_get_otp_mode(struct io_interface *ioif);

@@ -23,11 +23,15 @@ int main(int argc, char *argv[])
 
 	ret = at204_open(ioif);
 
-	while (!cmd_wake(ioif)) {};
+	//while (!cmd_wake(ioif)) {};
+	cmd_wake(ioif);
 	printf("ATSHA204A is awake\n");
 
-	cmd_get_random(ioif);
+	// cmd_get_random(ioif);
 	cmd_devrev(ioif);
+	printf("\n - Nonce -\n");
+	get_nonce(ioif);
+#if 0
 	cmd_get_serialnbr(ioif);
 	cmd_get_otp_mode(ioif);
 
@@ -39,6 +43,7 @@ int main(int argc, char *argv[])
 
 	cmd_get_lock_data(ioif);
 	cmd_get_lock_config(ioif);
+#endif
 
 	ret = at204_close(ioif);
 	if (ret != STATUS_OK) {
